@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="description" content="Groza — Fresh groceries delivered in minutes across Australia. Shop fruits, vegetables, dairy, snacks & more." />
+  <meta name="theme-color" content="#16A34A" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Groza — Instant Grocery Delivery" />
+  <meta property="og:description" content="Fresh groceries delivered in minutes across Australia." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://groza.com.au" />
+
+  <!-- PWA Manifest -->
+  <link rel="manifest" href="/manifest.json" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js" defer></script>
+
+  <title>Groza — Instant Grocery Delivery | Fresh Groceries in Minutes</title>
+
+  <style>
+    /* Critical inline styles for instant first paint */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; }
+    body { background: #fff; color: #1E293B; }
+    #app { min-height: 100dvh; }
+    .app-loader {
+      display: flex; align-items: center; justify-content: center;
+      min-height: 100dvh; background: #fff;
+    }
+    .app-loader .logo-pulse {
+      font-size: 2rem; font-weight: 800; color: #16A34A;
+      animation: pulse 1.5s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.6; transform: scale(0.95); }
+    }
+  </style>
+  <script type="module" crossorigin src="/assets/index-7vrEsr4G.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-BHtYP92q.css">
+</head>
+<body>
+  <div id="app">
+    <div class="app-loader">
+      <span class="logo-pulse">groza</span>
+    </div>
+  </div>
+</body>
+</html>

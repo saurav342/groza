@@ -1,0 +1,301 @@
+/* ============================================
+   CHECKOUT
+   ============================================ */
+
+.checkout-page {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: var(--space-6) var(--space-4);
+}
+
+.checkout-steps {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  margin-bottom: var(--space-8);
+}
+
+.checkout-step {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.checkout-step-number {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--font-sm);
+  font-weight: var(--weight-bold);
+  border-radius: var(--radius-full);
+  background: var(--bg-secondary);
+  color: var(--text-tertiary);
+  border: 2px solid var(--border);
+  transition: all var(--transition-base);
+}
+
+.checkout-step.active .checkout-step-number {
+  background: var(--primary);
+  color: white;
+  border-color: var(--primary);
+}
+
+.checkout-step.completed .checkout-step-number {
+  background: var(--primary-lighter);
+  color: var(--primary);
+  border-color: var(--primary);
+}
+
+.checkout-step-label {
+  font-size: var(--font-sm);
+  font-weight: var(--weight-medium);
+  color: var(--text-tertiary);
+  display: none;
+}
+
+.checkout-step.active .checkout-step-label {
+  color: var(--text);
+  font-weight: var(--weight-semibold);
+}
+
+.checkout-step.completed .checkout-step-label {
+  color: var(--primary);
+}
+
+.checkout-step-line {
+  width: 40px;
+  height: 2px;
+  background: var(--border);
+  border-radius: 1px;
+}
+
+.checkout-step-line.completed {
+  background: var(--primary);
+}
+
+@media (min-width: 768px) {
+  .checkout-step-label {
+    display: block;
+  }
+
+  .checkout-step-line {
+    width: 60px;
+  }
+}
+
+/* Checkout form sections */
+.checkout-section {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  padding: var(--space-6);
+  margin-bottom: var(--space-5);
+  animation: fadeInUp 0.3s ease both;
+}
+
+.checkout-section-title {
+  font-size: var(--font-lg);
+  font-weight: var(--weight-bold);
+  margin-bottom: var(--space-5);
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.checkout-form-group {
+  margin-bottom: var(--space-4);
+}
+
+.checkout-label {
+  display: block;
+  font-size: var(--font-sm);
+  font-weight: var(--weight-medium);
+  color: var(--text-secondary);
+  margin-bottom: var(--space-2);
+}
+
+.checkout-form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-3);
+}
+
+/* Delivery slots */
+.delivery-slots {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-3);
+}
+
+@media (min-width: 768px) {
+  .delivery-slots {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.delivery-slot {
+  padding: var(--space-3) var(--space-4);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  text-align: center;
+}
+
+.delivery-slot:hover {
+  border-color: var(--primary);
+  background: var(--primary-lighter);
+}
+
+.delivery-slot.selected {
+  border-color: var(--primary);
+  background: var(--primary-lighter);
+  box-shadow: 0 0 0 3px var(--primary-lighter);
+}
+
+.delivery-slot-time {
+  font-size: var(--font-sm);
+  font-weight: var(--weight-semibold);
+  color: var(--text);
+}
+
+.delivery-slot-date {
+  font-size: var(--font-xs);
+  color: var(--text-secondary);
+  margin-top: 2px;
+}
+
+.delivery-slot-fee {
+  font-size: var(--font-xs);
+  color: var(--primary);
+  font-weight: var(--weight-semibold);
+  margin-top: var(--space-1);
+}
+
+/* Payment methods */
+.payment-methods {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.payment-method {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-4);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.payment-method:hover {
+  border-color: var(--primary);
+}
+
+.payment-method.selected {
+  border-color: var(--primary);
+  background: var(--primary-lighter);
+}
+
+.payment-method-radio {
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--border);
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all var(--transition-fast);
+}
+
+.payment-method.selected .payment-method-radio {
+  border-color: var(--primary);
+}
+
+.payment-method.selected .payment-method-radio::after {
+  content: '';
+  width: 10px;
+  height: 10px;
+  background: var(--primary);
+  border-radius: var(--radius-full);
+}
+
+.payment-method-icon {
+  width: 40px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--font-xl);
+  flex-shrink: 0;
+}
+
+.payment-method-name {
+  font-size: var(--font-sm);
+  font-weight: var(--weight-semibold);
+  color: var(--text);
+}
+
+.payment-method-desc {
+  font-size: var(--font-xs);
+  color: var(--text-tertiary);
+}
+
+/* Order confirmation */
+.order-confirmation {
+  text-align: center;
+  padding: var(--space-12) var(--space-4);
+}
+
+.order-confirmation-icon {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto var(--space-5);
+  background: var(--primary-lighter);
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5rem;
+  animation: scaleIn 0.5s var(--transition-spring) both;
+}
+
+.order-confirmation-title {
+  font-size: var(--font-2xl);
+  font-weight: var(--weight-bold);
+  margin-bottom: var(--space-2);
+}
+
+.order-confirmation-text {
+  font-size: var(--font-sm);
+  color: var(--text-secondary);
+  margin-bottom: var(--space-6);
+}
+
+.order-confirmation-id {
+  font-size: var(--font-sm);
+  font-weight: var(--weight-semibold);
+  color: var(--primary);
+  background: var(--primary-lighter);
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-full);
+  display: inline-block;
+  margin-bottom: var(--space-6);
+}
+
+/* Checkout navigation */
+.checkout-nav {
+  display: flex;
+  gap: var(--space-3);
+  margin-top: var(--space-6);
+}
+
+.checkout-nav .btn {
+  flex: 1;
+}
