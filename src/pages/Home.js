@@ -50,12 +50,12 @@ export function renderHomePage() {
           </div>
           <div class="hero-illustration">
             <div class="hero-illustration-grid">
-              <div class="hero-emoji-card">🥑</div>
-              <div class="hero-emoji-card">🍓</div>
-              <div class="hero-emoji-card">🥛</div>
-              <div class="hero-emoji-card">🍞</div>
-              <div class="hero-emoji-card">🥩</div>
-              <div class="hero-emoji-card">🍊</div>
+              <a href="#/product/1" class="hero-emoji-card" aria-label="Organic Avocados">🥑</a>
+              <a href="#/product/9" class="hero-emoji-card" aria-label="Full Cream Milk">🥛</a>
+              <a href="#/product/3" class="hero-emoji-card" aria-label="Fresh Strawberries">🍓</a>
+              <a href="#/product/14" class="hero-emoji-card" aria-label="Sourdough Loaf">🍞</a>
+              <a href="#/product/19" class="hero-emoji-card" aria-label="Beef Mince">🥩</a>
+              <a href="#/product/28" class="hero-emoji-card" aria-label="Fresh Orange Juice">🍊</a>
             </div>
             <div class="hero-floating hero-floating-timer">
               <span class="timer-dot"></span>
@@ -78,12 +78,15 @@ export function renderHomePage() {
         <div class="flash-deals">
           <div class="flash-deals-header">
             <h2 class="flash-deals-title">⚡ Flash Deals</h2>
-            <div class="flash-timer" id="flash-timer">
-              <span class="flash-timer-unit" id="flash-hours">02</span>
-              <span class="flash-timer-sep">:</span>
-              <span class="flash-timer-unit" id="flash-mins">45</span>
-              <span class="flash-timer-sep">:</span>
-              <span class="flash-timer-unit" id="flash-secs">30</span>
+            <div style="display:flex;align-items:center;gap:var(--space-4)">
+              <div class="flash-timer" id="flash-timer">
+                <span class="flash-timer-unit" id="flash-hours">02</span>
+                <span class="flash-timer-sep">:</span>
+                <span class="flash-timer-unit" id="flash-mins">45</span>
+                <span class="flash-timer-sep">:</span>
+                <span class="flash-timer-unit" id="flash-secs">30</span>
+              </div>
+              <a href="#/collection/weekly-specials" class="section-link">View All →</a>
             </div>
           </div>
           <div class="product-scroll-row hide-scrollbar">
@@ -118,6 +121,7 @@ export function renderHomePage() {
       <section class="section" aria-label="Popular collections">
         <div class="section-header container">
           <h2 class="section-title">Popular Collections</h2>
+          <a href="#/categories" class="section-link">View All →</a>
         </div>
         <div class="container">
           <div class="collections-grid stagger-children">

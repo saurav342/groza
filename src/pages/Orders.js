@@ -2,6 +2,8 @@
 // GROZA — ORDERS PAGE
 // ============================================
 
+import { products } from '../data/products.js';
+
 export function renderOrdersPage() {
   const orders = [
     { id: 'GRZ-A7B3K2', date: '25 Jun 2026', status: 'Delivered', statusClass: 'badge-success', items: ['/images/products/products-string-bag-white-isolated-background-concept-green-shopping-good-nutrition-delivery-products-environmental-protection_99571-266.jpg', '/images/products/supplies-food-help-box-full-vegetables-canned-cereal-eggs-fruits-donation-box-delivery-charity-with-copy-space_280499-37.jpg', '/images/products/milk-carton-with-blue-cap-white-background_187299-47518.jpg', '/images/products/bag-donated-food-concept-delivery-necessary-foodstuffs-white-background_183793-4674.jpg'], total: 28.50, itemCount: 6 },
@@ -32,7 +34,13 @@ export function renderOrdersPage() {
               </div>
               <div class="order-card-body">
                 <div class="order-items-preview">
-                  ${order.items.map(imgSrc => `<div class="order-item-thumb"><img src="${imgSrc}" alt="Product" /></div>`).join('')}
+                  ${order.items.map(imgSrc => {
+                    const product = products.find(p => p.image === imgSrc);
+                    if (product) {
+                      return `<a href="#/product/${product.id}" class="order-item-thumb"><img src="${imgSrc}" alt="${product.name}" /></a>`;
+                    }
+                    return `<div class="order-item-thumb"><img src="${imgSrc}" alt="Product" /></div>`;
+                  }).join('')}
                   ${order.itemCount > order.items.length ? `
                     <div class="order-item-thumb" style="font-size:var(--font-xs);color:var(--text-secondary)">+${order.itemCount - order.items.length}</div>
                   ` : ''}

@@ -38,9 +38,9 @@ export function renderCartPage() {
           <div>
             ${items.map(item => `
               <div class="cart-item" data-cart-item-id="${item.id}" style="border-bottom:1px solid var(--border);padding:var(--space-4) 0">
-                <div class="cart-item-image" style="width:80px;height:80px;border-radius:var(--radius-lg);overflow:hidden;display:flex;align-items:center;justify-content:center;background:var(--bg-secondary)">
+                <a href="#/product/${item.id}" class="cart-item-image" style="width:80px;height:80px;border-radius:var(--radius-lg);overflow:hidden;display:flex;align-items:center;justify-content:center;background:var(--bg-secondary);text-decoration:none;">
                   <img src="${item.image}" alt="${item.name}" style="width:100%;height:100%;object-fit:cover;" />
-                </div>
+                </a>
                 <div class="cart-item-details" style="flex:1">
                   <a href="#/product/${item.id}" class="cart-item-name" style="font-size:var(--font-base)">${item.name}</a>
                   <div class="cart-item-weight">${item.weight}</div>

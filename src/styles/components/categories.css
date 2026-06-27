@@ -1,5 +1,5 @@
 /* ============================================
-   CATEGORY CARDS
+   CATEGORY CARDS — MODERN EDITION
    ============================================ */
 
 .categories-section {
@@ -12,7 +12,7 @@
   overflow-x: auto;
   scroll-snap-type: x mandatory;
   -webkit-overflow-scrolling: touch;
-  padding: var(--space-1) 0;
+  padding: var(--space-2) 0 var(--space-3);
   scrollbar-width: none;
 }
 
@@ -26,6 +26,7 @@
     grid-template-columns: repeat(4, 1fr);
     gap: var(--space-4);
     overflow: visible;
+    padding-bottom: 0;
   }
 }
 
@@ -35,6 +36,9 @@
   }
 }
 
+/* ============================================
+   CATEGORY CARD BASE
+   ============================================ */
 .category-card {
   display: flex;
   flex-direction: column;
@@ -43,54 +47,303 @@
   padding: var(--space-4) var(--space-3);
   min-width: 100px;
   background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-xl);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-2xl);
   cursor: pointer;
-  transition: all var(--transition-base);
+  transition: all var(--transition-spring);
   scroll-snap-align: start;
   text-align: center;
   user-select: none;
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+}
+
+.category-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity var(--transition-base);
+  background: inherit;
 }
 
 .category-card:hover {
-  transform: translateY(-4px);
+  transform: translateY(-6px) scale(1.02);
   box-shadow: var(--shadow-lg);
-  border-color: var(--primary);
+  border-color: transparent;
 }
 
 .category-card:active {
-  transform: translateY(-2px);
+  transform: translateY(-2px) scale(0.99);
 }
 
+/* Category icon container */
 .category-icon {
-  width: 56px;
-  height: 56px;
+  width: 60px;
+  height: 60px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 2rem;
-  border-radius: var(--radius-lg);
+  font-size: 1.9rem;
+  border-radius: var(--radius-xl);
   background: var(--bg-secondary);
   transition: transform var(--transition-spring);
+  position: relative;
+  z-index: 1;
 }
 
 .category-card:hover .category-icon {
-  transform: scale(1.1);
+  transform: scale(1.15) rotate(-3deg);
 }
 
 .category-name {
   font-size: var(--font-xs);
-  font-weight: var(--weight-semibold);
+  font-weight: var(--weight-bold);
   color: var(--text);
   line-height: var(--leading-tight);
+  position: relative;
+  z-index: 1;
 }
 
 .category-count {
   font-size: 10px;
   color: var(--text-tertiary);
-  font-weight: var(--weight-medium);
+  font-weight: var(--weight-semibold);
+  position: relative;
+  z-index: 1;
 }
 
+/* ============================================
+   PER-CATEGORY COLOR THEMES
+   ============================================ */
+
+/* Fruits & Vegetables — green */
+.category-card[href*="fruits-vegetables"],
+.category-card[href*="fruits-vegetables"] {
+  --cat-color: #16A34A;
+  --cat-bg: #DCFCE7;
+}
+.category-card[href*="fruits-vegetables"] .category-icon {
+  background: #DCFCE7;
+  color: #15803D;
+}
+.category-card[href*="fruits-vegetables"]:hover {
+  background: #F0FDF4;
+  border-color: #86EFAC;
+  box-shadow: 0 12px 24px rgba(22, 163, 74, 0.18);
+}
+
+/* Dairy & Eggs — blue */
+.category-card[href*="dairy-eggs"] .category-icon {
+  background: #DBEAFE;
+  color: #1D4ED8;
+}
+.category-card[href*="dairy-eggs"]:hover {
+  background: #EFF6FF;
+  border-color: #93C5FD;
+  box-shadow: 0 12px 24px rgba(59, 130, 246, 0.18);
+}
+
+/* Bakery — amber */
+.category-card[href*="bakery"] .category-icon {
+  background: #FEF3C7;
+  color: #B45309;
+}
+.category-card[href*="bakery"]:hover {
+  background: #FFFBEB;
+  border-color: #FCD34D;
+  box-shadow: 0 12px 24px rgba(217, 119, 6, 0.18);
+}
+
+/* Meat & Seafood — red */
+.category-card[href*="meat-seafood"] .category-icon {
+  background: #FEE2E2;
+  color: #B91C1C;
+}
+.category-card[href*="meat-seafood"]:hover {
+  background: #FEF2F2;
+  border-color: #FCA5A5;
+  box-shadow: 0 12px 24px rgba(220, 38, 38, 0.18);
+}
+
+/* Frozen — cyan */
+.category-card[href*="frozen"] .category-icon {
+  background: #CFFAFE;
+  color: #0E7490;
+}
+.category-card[href*="frozen"]:hover {
+  background: #ECFEFF;
+  border-color: #67E8F9;
+  box-shadow: 0 12px 24px rgba(14, 116, 144, 0.18);
+}
+
+/* Snacks — yellow */
+.category-card[href*="snacks"] .category-icon {
+  background: #FEF9C3;
+  color: #A16207;
+}
+.category-card[href*="snacks"]:hover {
+  background: #FEFCE8;
+  border-color: #FDE047;
+  box-shadow: 0 12px 24px rgba(161, 98, 7, 0.15);
+}
+
+/* Drinks — purple */
+.category-card[href*="drinks"] .category-icon {
+  background: #EDE9FE;
+  color: #6D28D9;
+}
+.category-card[href*="drinks"]:hover {
+  background: #F5F3FF;
+  border-color: #C4B5FD;
+  box-shadow: 0 12px 24px rgba(109, 40, 217, 0.18);
+}
+
+/* Breakfast — pink */
+.category-card[href*="breakfast"] .category-icon {
+  background: #FCE7F3;
+  color: #BE185D;
+}
+.category-card[href*="breakfast"]:hover {
+  background: #FDF2F8;
+  border-color: #F9A8D4;
+  box-shadow: 0 12px 24px rgba(190, 24, 93, 0.15);
+}
+
+/* Household — indigo */
+.category-card[href*="household"] .category-icon {
+  background: #E0E7FF;
+  color: #3730A3;
+}
+.category-card[href*="household"]:hover {
+  background: #EEF2FF;
+  border-color: #A5B4FC;
+  box-shadow: 0 12px 24px rgba(55, 48, 163, 0.15);
+}
+
+/* Personal Care — teal */
+.category-card[href*="personal-care"] .category-icon {
+  background: #CCFBF1;
+  color: #0F766E;
+}
+.category-card[href*="personal-care"]:hover {
+  background: #F0FDFA;
+  border-color: #5EEAD4;
+  box-shadow: 0 12px 24px rgba(15, 118, 110, 0.15);
+}
+
+/* Baby — rose */
+.category-card[href*="baby"] .category-icon {
+  background: #FFE4E6;
+  color: #BE123C;
+}
+.category-card[href*="baby"]:hover {
+  background: #FFF1F2;
+  border-color: #FCA5A5;
+  box-shadow: 0 12px 24px rgba(190, 18, 60, 0.15);
+}
+
+/* Pet Supplies — violet */
+.category-card[href*="pet-supplies"] .category-icon {
+  background: #F3E8FF;
+  color: #7E22CE;
+}
+.category-card[href*="pet-supplies"]:hover {
+  background: #FAF5FF;
+  border-color: #D8B4FE;
+  box-shadow: 0 12px 24px rgba(126, 34, 206, 0.15);
+}
+
+/* ============================================
+   COLLECTIONS GRID
+   ============================================ */
+.collections-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-3);
+}
+
+@media (min-width: 640px) {
+  .collections-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .collections-grid {
+    grid-template-columns: repeat(6, 1fr);
+  }
+}
+
+.collection-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-5) var(--space-3);
+  background: var(--bg-card);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-2xl);
+  text-align: center;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all var(--transition-spring);
+  position: relative;
+  overflow: hidden;
+}
+
+.collection-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--primary-gradient);
+  opacity: 0;
+  transition: opacity var(--transition-base);
+}
+
+.collection-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--primary);
+  box-shadow: var(--shadow-green-sm);
+}
+
+.collection-card:hover::before {
+  opacity: 0.05;
+}
+
+.collection-card-emoji {
+  font-size: 2.2rem;
+  line-height: 1;
+  position: relative;
+  z-index: 1;
+  transition: transform var(--transition-spring);
+}
+
+.collection-card:hover .collection-card-emoji {
+  transform: scale(1.2) rotate(-5deg);
+}
+
+.collection-card-name {
+  font-size: var(--font-sm);
+  font-weight: var(--weight-bold);
+  color: var(--text);
+  line-height: var(--leading-tight);
+  position: relative;
+  z-index: 1;
+}
+
+.collection-card-count {
+  font-size: 11px;
+  color: var(--text-tertiary);
+  font-weight: var(--weight-medium);
+  position: relative;
+  z-index: 1;
+}
+
+/* ============================================
+   RESPONSIVE SIZING
+   ============================================ */
 @media (min-width: 768px) {
   .category-card {
     min-width: unset;
@@ -98,9 +351,9 @@
   }
 
   .category-icon {
-    width: 64px;
-    height: 64px;
-    font-size: 2.2rem;
+    width: 68px;
+    height: 68px;
+    font-size: 2.1rem;
   }
 
   .category-name {

@@ -1,17 +1,50 @@
 /* ============================================
-   HERO SECTION
+   HERO SECTION — MODERN EDITION
    ============================================ */
 
 .hero {
   position: relative;
   overflow: hidden;
-  background: linear-gradient(135deg, #F0FDF4 0%, #DCFCE7 30%, #F0FDF4 60%, #ECFDF5 100%);
-  padding: var(--space-8) 0;
+  background: linear-gradient(145deg, #F0FDF4 0%, #DCFCE7 25%, #ECFDF5 55%, #F0FDF4 80%, #FFFBEB 100%);
+  padding: var(--space-10) 0;
   margin-top: 0;
 }
 
+/* Decorative blobs */
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -80px;
+  right: -80px;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(74, 222, 128, 0.22) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: -60px;
+  left: -60px;
+  width: 320px;
+  height: 320px;
+  background: radial-gradient(circle, rgba(251, 191, 36, 0.14) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
 [data-theme="dark"] .hero {
-  background: linear-gradient(135deg, #052E16 0%, #14532D 30%, #052E16 60%, #064E3B 100%);
+  background: linear-gradient(145deg, #052E16 0%, #14532D 25%, #052E16 55%, #064E3B 80%, #1A0A00 100%);
+}
+
+[data-theme="dark"] .hero::before {
+  background: radial-gradient(circle, rgba(34, 197, 94, 0.15) 0%, transparent 70%);
+}
+
+[data-theme="dark"] .hero::after {
+  background: radial-gradient(circle, rgba(251, 191, 36, 0.08) 0%, transparent 70%);
 }
 
 .hero-inner {
@@ -22,13 +55,16 @@
   max-width: var(--container-xl);
   margin: 0 auto;
   padding: 0 var(--space-4);
+  position: relative;
+  z-index: 1;
 }
 
 .hero-content {
   flex: 1;
-  max-width: 560px;
+  max-width: 580px;
 }
 
+/* Badge */
 .hero-badge {
   display: inline-flex;
   align-items: center;
@@ -39,9 +75,10 @@
   font-size: var(--font-sm);
   font-weight: var(--weight-semibold);
   color: var(--primary);
-  box-shadow: var(--shadow-sm);
+  box-shadow: var(--shadow-md);
   margin-bottom: var(--space-5);
-  animation: fadeInUp 0.6s ease both;
+  animation: fadeInUp 0.5s ease both;
+  border: 1px solid var(--primary-lighter);
 }
 
 .hero-badge .dot {
@@ -50,99 +87,140 @@
   border-radius: 50%;
   background: var(--primary);
   animation: pulse 2s ease-in-out infinite;
+  flex-shrink: 0;
 }
 
+/* Title */
 .hero-title {
-  font-size: var(--font-3xl);
-  font-weight: var(--weight-extrabold);
+  font-size: clamp(2rem, 5vw, 3.25rem);
+  font-weight: var(--weight-black);
   color: var(--text);
   line-height: var(--leading-tight);
   margin-bottom: var(--space-4);
-  letter-spacing: -0.5px;
-  animation: fadeInUp 0.6s ease 0.1s both;
+  letter-spacing: -1.5px;
+  animation: fadeInUp 0.55s ease 0.08s both;
 }
 
 .hero-title .highlight {
-  color: var(--primary);
+  background: var(--primary-gradient-rich);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
   position: relative;
+}
+
+/* Underline accent on highlight */
+.hero-title .highlight::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--primary-gradient);
+  border-radius: var(--radius-full);
+  opacity: 0.6;
 }
 
 .hero-subtitle {
   font-size: var(--font-lg);
   color: var(--text-secondary);
   line-height: var(--leading-relaxed);
-  margin-bottom: var(--space-6);
-  animation: fadeInUp 0.6s ease 0.2s both;
+  margin-bottom: var(--space-7, 28px);
+  animation: fadeInUp 0.55s ease 0.16s both;
+  max-width: 460px;
 }
 
+/* Actions */
 .hero-actions {
   display: flex;
   align-items: center;
   gap: var(--space-3);
-  animation: fadeInUp 0.6s ease 0.3s both;
+  animation: fadeInUp 0.55s ease 0.24s both;
+  flex-wrap: wrap;
 }
 
 .hero-cta {
-  padding: var(--space-4) var(--space-8);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-8);
   font-size: var(--font-base);
   font-weight: var(--weight-bold);
-  background: var(--primary);
+  background: var(--primary-gradient-rich);
   color: white;
   border-radius: var(--radius-full);
-  transition: all var(--transition-fast);
-  box-shadow: 0 4px 14px rgba(22, 163, 74, 0.35);
+  transition: all var(--transition-base);
+  box-shadow: var(--shadow-green-sm);
+  letter-spacing: 0.2px;
 }
 
 .hero-cta:hover {
-  background: var(--primary-dark);
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(22, 163, 74, 0.4);
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: var(--shadow-green);
 }
 
 .hero-cta:active {
-  transform: translateY(0);
+  transform: translateY(0) scale(0.99);
 }
 
 .hero-secondary-cta {
-  padding: var(--space-4) var(--space-6);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-6);
   font-size: var(--font-base);
   font-weight: var(--weight-semibold);
   color: var(--text-secondary);
   border-radius: var(--radius-full);
-  transition: all var(--transition-fast);
+  border: 1.5px solid var(--border);
+  background: var(--bg);
+  transition: all var(--transition-base);
 }
 
 .hero-secondary-cta:hover {
-  color: var(--text);
-  background: var(--bg);
+  color: var(--primary);
+  border-color: var(--primary);
+  background: var(--primary-lighter);
 }
 
+/* Stats */
 .hero-stats {
   display: flex;
-  gap: var(--space-8);
+  gap: var(--space-6);
   margin-top: var(--space-8);
-  animation: fadeInUp 0.6s ease 0.4s both;
+  animation: fadeInUp 0.55s ease 0.32s both;
 }
 
 .hero-stat {
   text-align: left;
+  padding: var(--space-3) var(--space-4);
+  background: var(--bg-glass-strong);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-light);
+  backdrop-filter: blur(8px);
+  box-shadow: var(--shadow-sm);
+  min-width: 80px;
 }
 
 .hero-stat-value {
-  font-size: var(--font-2xl);
+  font-size: var(--font-xl);
   font-weight: var(--weight-extrabold);
-  color: var(--text);
+  color: var(--primary);
+  line-height: 1;
 }
 
 .hero-stat-label {
-  font-size: var(--font-sm);
+  font-size: var(--font-xs);
   color: var(--text-secondary);
-  margin-top: 2px;
+  margin-top: 3px;
+  font-weight: var(--weight-medium);
 }
 
+/* Illustration grid */
 .hero-illustration {
   flex: 1;
-  max-width: 480px;
+  max-width: 460px;
   display: none;
   position: relative;
 }
@@ -163,37 +241,47 @@
   background: var(--bg);
   border-radius: var(--radius-xl);
   box-shadow: var(--shadow-md);
-  transition: transform var(--transition-spring);
+  transition: all var(--transition-spring);
   animation: fadeInUp 0.5s ease both;
+  border: 1.5px solid rgba(255,255,255,0.8);
+  text-decoration: none;
+  cursor: pointer;
 }
 
 .hero-emoji-card:hover {
-  transform: translateY(-4px) scale(1.05);
+  transform: translateY(-6px) scale(1.06);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--primary-light);
 }
 
-.hero-emoji-card:nth-child(2) { animation-delay: 0.1s; }
-.hero-emoji-card:nth-child(3) { animation-delay: 0.2s; }
-.hero-emoji-card:nth-child(4) { animation-delay: 0.15s; }
-.hero-emoji-card:nth-child(5) { animation-delay: 0.25s; }
-.hero-emoji-card:nth-child(6) { animation-delay: 0.35s; }
+.hero-emoji-card:nth-child(2) { animation-delay: 0.07s; }
+.hero-emoji-card:nth-child(3) { animation-delay: 0.14s; }
+.hero-emoji-card:nth-child(4) { animation-delay: 0.10s; }
+.hero-emoji-card:nth-child(5) { animation-delay: 0.17s; }
+.hero-emoji-card:nth-child(6) { animation-delay: 0.24s; }
 
+/* Floating badge */
 .hero-floating {
   position: absolute;
   background: var(--bg);
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-xl);
   padding: var(--space-3) var(--space-4);
-  box-shadow: var(--shadow-lg);
-  animation: float 3s ease-in-out infinite;
+  box-shadow: var(--shadow-xl);
+  animation: float 3.5s ease-in-out infinite;
+  border: 1px solid var(--border-light);
+  z-index: 2;
 }
 
 .hero-floating-timer {
-  top: 10%;
-  right: -10%;
+  top: 5%;
+  right: -5%;
   display: flex;
   align-items: center;
   gap: var(--space-2);
   font-size: var(--font-sm);
   font-weight: var(--weight-semibold);
+  color: var(--text);
+  white-space: nowrap;
 }
 
 .hero-floating-timer .timer-dot {
@@ -202,16 +290,84 @@
   border-radius: 50%;
   background: var(--primary);
   animation: pulse 1.5s ease-in-out infinite;
+  flex-shrink: 0;
 }
 
-/* Responsive */
+/* ============================================
+   COUPON BANNER
+   ============================================ */
+.coupon-banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-4) var(--space-6);
+  background: linear-gradient(135deg, #FF6B35 0%, #F59E0B 50%, #FBBF24 100%);
+  border-radius: var(--radius-2xl);
+  cursor: pointer;
+  transition: all var(--transition-base);
+  box-shadow: 0 8px 24px rgba(245, 158, 11, 0.30);
+  gap: var(--space-4);
+  position: relative;
+  overflow: hidden;
+}
+
+.coupon-banner::before {
+  content: '';
+  position: absolute;
+  top: -30px;
+  right: -30px;
+  width: 120px;
+  height: 120px;
+  background: rgba(255,255,255,0.12);
+  border-radius: 50%;
+}
+
+.coupon-banner::after {
+  content: '';
+  position: absolute;
+  bottom: -20px;
+  left: 30%;
+  width: 80px;
+  height: 80px;
+  background: rgba(255,255,255,0.08);
+  border-radius: 50%;
+}
+
+.coupon-banner:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px rgba(245, 158, 11, 0.40);
+}
+
+.coupon-banner-text {
+  font-size: var(--font-base);
+  font-weight: var(--weight-bold);
+  color: white;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.15);
+  position: relative;
+  z-index: 1;
+}
+
+.coupon-banner-code {
+  padding: var(--space-2) var(--space-4);
+  background: rgba(255, 255, 255, 0.25);
+  color: white;
+  font-weight: var(--weight-extrabold);
+  font-size: var(--font-sm);
+  border-radius: var(--radius-md);
+  border: 1.5px dashed rgba(255, 255, 255, 0.60);
+  letter-spacing: 1.5px;
+  white-space: nowrap;
+  position: relative;
+  z-index: 1;
+  backdrop-filter: blur(4px);
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
 @media (min-width: 768px) {
   .hero {
     padding: var(--space-12) 0;
-  }
-
-  .hero-title {
-    font-size: var(--font-4xl);
   }
 
   .hero-inner {
@@ -222,11 +378,6 @@
 @media (min-width: 1024px) {
   .hero {
     padding: var(--space-16) 0;
-  }
-
-  .hero-title {
-    font-size: var(--font-5xl);
-    letter-spacing: -1px;
   }
 
   .hero-illustration {

@@ -206,8 +206,11 @@ function renderStep4() {
           ${items.map(item => `
             <div style="display:flex;justify-content:space-between;padding:var(--space-2) 0;font-size:var(--font-sm)">
               <span style="display:inline-flex;align-items:center;gap:var(--space-2)">
-                <img src="${item.image}" alt="${item.name}" style="width:24px;height:24px;border-radius:var(--radius-sm);object-fit:cover" />
-                ${item.name} × ${item.qty}
+                <a href="#/product/${item.id}" style="display:inline-flex;align-items:center;gap:var(--space-2);text-decoration:none;color:inherit;">
+                  <img src="${item.image}" alt="${item.name}" style="width:24px;height:24px;border-radius:var(--radius-sm);object-fit:cover" />
+                  ${item.name}
+                </a>
+                × ${item.qty}
               </span>
               <span>$${(item.price * item.qty).toFixed(2)}</span>
             </div>

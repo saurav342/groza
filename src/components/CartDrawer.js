@@ -41,11 +41,11 @@ export function renderCartDrawer() {
         ` : `
           ${items.map(item => `
             <div class="cart-item" data-cart-item-id="${item.id}">
-              <div class="cart-item-image" style="overflow:hidden;display:flex;align-items:center;justify-content:center;background:var(--bg-secondary)">
-                <img src="${item.image}" alt="${item.name}" style="width:100%;height:100%;object-fit:cover;" />
-              </div>
+              <a href="#/product/${item.id}" onclick="window.closeCart()" class="cart-item-image">
+                <img src="${item.image}" alt="${item.name}" />
+              </a>
               <div class="cart-item-details">
-                <div class="cart-item-name">${item.name}</div>
+                <a href="#/product/${item.id}" onclick="window.closeCart()" class="cart-item-name" style="text-decoration:none;color:inherit;display:block;">${item.name}</a>
                 <div class="cart-item-weight">${item.weight}</div>
                 <div class="cart-item-bottom">
                   <span class="cart-item-price">$${(item.price * item.qty).toFixed(2)}</span>

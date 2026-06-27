@@ -13,6 +13,7 @@ import { renderBottomNav } from './components/BottomNav.js';
 import { renderCartDrawer } from './components/CartDrawer.js';
 import { renderSearchOverlay, initSearch } from './components/SearchOverlay.js';
 import { renderHomePage, initHomePage } from './pages/Home.js';
+import { renderProductCard } from './components/ProductCard.js';
 import { renderCategoryPage } from './pages/Category.js';
 import { renderProductPage, initProductPage } from './pages/Product.js';
 import { renderCartPage } from './pages/Cart.js';
@@ -276,9 +277,7 @@ router.register('/collection/:id', (params) => {
       <a href="#/" class="btn btn-primary" style="margin-top:var(--space-4)">Back to Home</a>
     </div></div>`;
   }
-  const import_products = products;
-  const filteredProducts = import_products.filter(collection.productFilter);
-  const { renderProductCard } = require('./components/ProductCard.js');
+  const filteredProducts = products.filter(collection.productFilter);
   
   return `
     <div class="page">
